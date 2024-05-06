@@ -116,6 +116,7 @@ export const EditCar =
     plate,
     manufacture,
     model,
+    image,
     rentPerDay,
     capacity,
     description,
@@ -130,20 +131,22 @@ export const EditCar =
   async (dispatch, getState) => {
     const { token } = getState().auth;
 
-    let data = JSON.stringify({
-      plate,
-      manufacture,
-      model,
-      rentPerDay,
-      capacity,
-      description,
-      carsize_id,
-      availableAt,
-      transmission,
-      available,
-      typeCar,
-      Year,
-    });
+    let data = new FormData();
+    data.append("plate", plate);
+    data.append("manufacture", manufacture);
+    data.append("model", model);
+    data.append("rentPerDay", rentPerDay);
+    data.append("capacity", capacity);
+    data.append("description", description);
+    data.append("carsize_id", carsize_id);
+    data.append("availableAt", availableAt);
+    data.append("transmission", transmission);
+    data.append("available", available);
+    data.append("typeCar", typeCar);
+    data.append("Year", Year);
+    if (image) {
+      data.append("image", image);
+    }
 
     let config = {
       method: "put",
@@ -224,6 +227,21 @@ export const deleteCarId = (id) => async (dispatch, getState) => {
 //     data.append("available", available);
 //     data.append("typeCar", typeCar);
 //     data.append("Year", Year);
+
+// let data = JSON.stringify({
+//   plate,
+//   manufacture,
+//   model,
+//   rentPerDay,
+//   capacity,
+//   description,
+//   carsize_id,
+//   availableAt,
+//   transmission,
+//   available,
+//   typeCar,
+//   Year,
+// });
 
 //     let config = {
 //       method: "put",

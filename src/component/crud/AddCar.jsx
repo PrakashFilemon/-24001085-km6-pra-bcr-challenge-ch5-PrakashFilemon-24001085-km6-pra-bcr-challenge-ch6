@@ -78,6 +78,7 @@ function AddComponent() {
               onChange={(e) => setModel(e.target.value)}
             />
           </Form.Group>
+
           <Form.Group controlId="image" className="mb-3">
             <Form.Label>Image</Form.Label>
             <Form.Control
@@ -85,6 +86,7 @@ function AddComponent() {
               onChange={(e) => setImage(e.target.files[0])}
             />
           </Form.Group>
+
           <Form.Group className="mb-3" controlId="rentPerDay">
             <Form.Label>Rent One Day</Form.Label>
             <Form.Control

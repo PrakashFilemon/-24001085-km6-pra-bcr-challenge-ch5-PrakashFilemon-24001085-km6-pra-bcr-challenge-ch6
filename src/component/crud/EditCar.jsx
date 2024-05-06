@@ -15,6 +15,7 @@ function EditComponent() {
   const [plate, setPlate] = useState("");
   const [manufacture, setManufacture] = useState("");
   const [model, setModel] = useState("");
+  const [image, setImage] = useState();
   const [rentPerDay, setrentPerDay] = useState("");
   const [capacity, setCapacity] = useState("");
   const [description, setDescription] = useState("");
@@ -23,7 +24,7 @@ function EditComponent() {
   const [transmission, setTransmission] = useState("");
   const [available, setAvailable] = useState(false);
   const [typeCar, settypeCar] = useState("");
-  const [Year, setYear] = useState("");
+  const [Year, setYear] = useState(0);
   const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
@@ -57,6 +58,7 @@ function EditComponent() {
         plate,
         manufacture,
         model,
+        image,
         rentPerDay,
         capacity,
         description,
@@ -99,6 +101,14 @@ function EditComponent() {
               type="text"
               value={model}
               onChange={(e) => setModel(e.target.value)}
+            />
+          </Form.Group>
+
+          <Form.Group controlId="image" className="mb-3">
+            <Form.Label>Image</Form.Label>
+            <Form.Control
+              type="file"
+              onChange={(e) => setImage(e.target.files[0])}
             />
           </Form.Group>
 
