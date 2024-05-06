@@ -78,7 +78,7 @@ const router = createBrowserRouter([
   {
     path: "/management",
     element: (
-      <Protected>
+      <Protected roles={["admin", "superAdmin"]}>
         <Navbar />
         <Container className="mt-5">
           <Management />
@@ -89,7 +89,7 @@ const router = createBrowserRouter([
   {
     path: "/add",
     element: (
-      <Protected>
+      <Protected roles={["admin", "superAdmin"]}>
         <Container className="mt-5">
           <AddCar />
         </Container>
@@ -99,7 +99,7 @@ const router = createBrowserRouter([
   {
     path: "/edit/:id",
     element: (
-      <Protected>
+      <Protected roles={["admin", "superAdmin"]}>
         <Container className="mt-5">
           <EditCar />
         </Container>

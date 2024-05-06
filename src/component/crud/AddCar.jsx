@@ -18,7 +18,7 @@ function AddComponent() {
   const [carsize_id, setCarsize_id] = useState("");
   const [availableAt, setAvailableAt] = useState("");
   const [transmission, setTransmission] = useState("");
-  const [available, setAvailable] = useState("");
+  const [available, setAvailable] = useState(false);
   const [typeCar, settypeCar] = useState("");
   const [Year, setYear] = useState(0);
   const [isLoading, setIsLoading] = useState(false);
@@ -39,6 +39,7 @@ function AddComponent() {
         description,
         carsize_id,
         availableAt,
+        transmission,
         available,
         typeCar,
         Year,
@@ -46,7 +47,7 @@ function AddComponent() {
       )
     );
   };
-  console.log(Year);
+
   return (
     <div className="columns mt-5 is-centered">
       <div className="column is-half">
@@ -119,23 +120,25 @@ function AddComponent() {
               onChange={(e) => setCarsize_id(e.target.value)}
             />
           </Form.Group>
-
           <Form.Group className="mb-3" controlId="availableAt">
             <Form.Label>AvailableAt</Form.Label>
             <Form.Control
-              type="text"
+              type="date"
               value={availableAt}
               onChange={(e) => setAvailableAt(e.target.value)}
             />
           </Form.Group>
 
           <Form.Group className="mb-3" controlId="available">
-            <Form.Label>AvailableAt</Form.Label>
+            <Form.Label>Available</Form.Label>
             <Form.Control
-              type="text"
+              as="select"
               value={available}
               onChange={(e) => setAvailable(e.target.value)}
-            />
+            >
+              <option value="true">Available</option>
+              <option value="false">Not Available</option>
+            </Form.Control>
           </Form.Group>
 
           <Form.Group className="mb-3" controlId="transmission">

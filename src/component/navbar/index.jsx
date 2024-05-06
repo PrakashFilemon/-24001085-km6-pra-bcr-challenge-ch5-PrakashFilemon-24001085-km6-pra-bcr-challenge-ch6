@@ -29,6 +29,23 @@ const NavbarComponent = () => {
             </Nav.Link>
             {user ? (
               <>
+                <Nav className="ms-auto mb-2 mb-lg-0">
+                  <Nav.Item>
+                    <Nav.Link href="#ourservice">OurServices</Nav.Link>
+                  </Nav.Item>
+                  <Nav.Item>
+                    <Nav.Link href="#whyus">Why Us</Nav.Link>
+                  </Nav.Item>
+                  <Nav.Item>
+                    <Nav.Link href="#testimonial">Testimonial</Nav.Link>
+                  </Nav.Item>
+                  <Nav.Item>
+                    <Nav.Link href="faq">FAQ</Nav.Link>
+                  </Nav.Item>
+                  <Nav.Item>
+                    <Nav.Link href="#register">Register</Nav.Link>
+                  </Nav.Item>
+                </Nav>
                 <Nav.Link as={Link} to="/profile">
                   {user?.name}
                 </Nav.Link>
@@ -40,6 +57,12 @@ const NavbarComponent = () => {
                 >
                   Logout
                 </Nav.Link>
+                {user?.role == "admin" ||
+                  ("superAdmin" && (
+                    <Nav.Link as={Link} to="/management">
+                      Management
+                    </Nav.Link>
+                  ))}
               </>
             ) : (
               <>
@@ -48,9 +71,6 @@ const NavbarComponent = () => {
                 </Nav.Link>
                 <Nav.Link as={Link} to="/register">
                   Register
-                </Nav.Link>
-                <Nav.Link as={Link} to="/">
-                  Management
                 </Nav.Link>
               </>
             )}
