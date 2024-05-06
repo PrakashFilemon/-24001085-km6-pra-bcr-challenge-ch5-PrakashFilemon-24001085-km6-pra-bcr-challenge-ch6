@@ -130,19 +130,20 @@ export const EditCar =
   async (dispatch, getState) => {
     const { token } = getState().auth;
 
-    let data = new FormData();
-    data.append("plate", plate);
-    data.append("manufacture", manufacture);
-    data.append("model", model);
-    data.append("rentPerDay", rentPerDay);
-    data.append("capacity", capacity);
-    data.append("description", description);
-    data.append("carsize_id", carsize_id);
-    data.append("availableAt", availableAt);
-    data.append("transmission", transmission);
-    data.append("available", available);
-    data.append("typeCar", typeCar);
-    data.append("Year", Year);
+    let data = JSON.stringify({
+      plate,
+      manufacture,
+      model,
+      rentPerDay,
+      capacity,
+      description,
+      carsize_id,
+      availableAt,
+      transmission,
+      available,
+      typeCar,
+      Year,
+    });
 
     let config = {
       method: "put",
@@ -188,6 +189,64 @@ export const deleteCarId = (id) => async (dispatch, getState) => {
     toast.error(error?.response?.data?.message);
   }
 };
+
+// export const EditCar =
+//   (
+//     id,
+//     navigate,
+//     plate,
+//     manufacture,
+//     model,
+//     rentPerDay,
+//     capacity,
+//     description,
+//     carsize_id,
+//     availableAt,
+//     transmission,
+//     available,
+//     typeCar,
+//     Year,
+//     setIsloading
+//   ) =>
+//   async (dispatch, getState) => {
+//     const { token } = getState().auth;
+
+//     let data = new FormData();
+//     data.append("plate", plate);
+//     data.append("manufacture", manufacture);
+//     data.append("model", model);
+//     data.append("rentPerDay", rentPerDay);
+//     data.append("capacity", capacity);
+//     data.append("description", description);
+//     data.append("carsize_id", carsize_id);
+//     data.append("availableAt", availableAt);
+//     data.append("transmission", transmission);
+//     data.append("available", available);
+//     data.append("typeCar", typeCar);
+//     data.append("Year", Year);
+
+//     let config = {
+//       method: "put",
+//       maxBodyLength: Infinity,
+//       url: `${import.meta.env.VITE_BACKEND_API}/api/car/${id}`,
+//       headers: {
+//         Authorization: `Bearer ${token}`,
+//       },
+//       data: data,
+//     };
+
+//     try {
+//       const response = await axios.request(config);
+//       console.log(JSON.stringify(response.data));
+//       toast.success("Update Data successfully!");
+//       dispatch(getCars());
+//       navigate("/");
+//     } catch (error) {
+//       toast.error(error?.response?.data?.message);
+//     }
+//     setIsloading(false);
+//   };
+
 // const [cars, setCars] = useState([]);
 // const [isLoading, setIsLoading] = useState(false);
 // const token = localStorage.getItem("token");

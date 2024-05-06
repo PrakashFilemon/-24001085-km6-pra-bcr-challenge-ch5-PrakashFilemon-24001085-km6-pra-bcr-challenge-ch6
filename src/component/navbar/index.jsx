@@ -42,9 +42,6 @@ const NavbarComponent = () => {
                   <Nav.Item>
                     <Nav.Link href="faq">FAQ</Nav.Link>
                   </Nav.Item>
-                  <Nav.Item>
-                    <Nav.Link href="#register">Register</Nav.Link>
-                  </Nav.Item>
                 </Nav>
                 <Nav.Link as={Link} to="/profile">
                   {user?.name}

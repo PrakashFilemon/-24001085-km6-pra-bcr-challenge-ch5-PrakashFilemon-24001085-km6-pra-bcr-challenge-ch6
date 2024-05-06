@@ -21,7 +21,7 @@ function EditComponent() {
   const [carsize_id, setCarsize_id] = useState("");
   const [availableAt, setAvailableAt] = useState("");
   const [transmission, setTransmission] = useState("");
-  const [available, setAvailable] = useState("");
+  const [available, setAvailable] = useState(false);
   const [typeCar, settypeCar] = useState("");
   const [Year, setYear] = useState("");
   const [isLoading, setIsLoading] = useState(false);
@@ -53,6 +53,7 @@ function EditComponent() {
     //Login action (fetch Api)
     dispatch(
       EditCar(
+        navigate,
         plate,
         manufacture,
         model,
@@ -61,11 +62,11 @@ function EditComponent() {
         description,
         carsize_id,
         availableAt,
+        transmission,
         available,
         typeCar,
         Year,
-        setIsLoading,
-        navigate
+        setIsLoading
       )
     );
   };
@@ -149,10 +150,13 @@ function EditComponent() {
           <Form.Group className="mb-3" controlId="available">
             <Form.Label>Available</Form.Label>
             <Form.Control
-              type="text"
+              as="select"
               value={available}
               onChange={(e) => setAvailable(e.target.value)}
-            />
+            >
+              <option value="true">Available</option>
+              <option value="false">Not Available</option>
+            </Form.Control>
           </Form.Group>
 
           <Form.Group className="mb-3" controlId="transmission">
