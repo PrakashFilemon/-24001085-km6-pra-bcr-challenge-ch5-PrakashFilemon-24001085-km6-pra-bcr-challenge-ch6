@@ -54,6 +54,7 @@ function EditComponent() {
     //Login action (fetch Api)
     dispatch(
       EditCar(
+        id,
         navigate,
         plate,
         manufacture,
